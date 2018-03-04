@@ -61,7 +61,8 @@
     "component": {
       "inlineStyle": true,
       "inlineTemplate": true,
-      "spec": false
+      "spec": false,
+      "flat": true
     },
     "directive": {
       "spec": false
