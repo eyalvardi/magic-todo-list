@@ -15,7 +15,7 @@ import {TodoListService} from "./todo-list.service";
                 </mat-form-field>
 
                 <button mat-raised-button color="primary" (click)="blService.addTask(i.value)">Add Task</button>
-            </div>            
+            </div>
             <br>
             <div>
                 <table class="table table-striped table-condensed border table-hover table-sm">
@@ -33,17 +33,12 @@ import {TodoListService} from "./todo-list.service";
                         <td scope="row">{{task.id}}</td>
                         <td>{{task.desc}}</td>
                         <td>
-                            
-                                <mat-select placeholder="Priority">
-                                    <mat-option [value]="1">1</mat-option>
-                                    <mat-option [value]="2">2</mat-option>
-                                    <mat-option [value]="3">3</mat-option>
-                                </mat-select>
-                            
+                            <mat-select placeholder="Priority">
+                                <mat-option [value]="1">1</mat-option>
+                                <mat-option [value]="2">2</mat-option>
+                                <mat-option [value]="3">3</mat-option>
+                            </mat-select>
                         </td>
-                        <!--
-                                                    <td><input type="checkbox" [(ngModel)]="task.isDone"></td>
-                        -->
                         <td>
                             <mat-checkbox [(ngModel)]="task.isDone"></mat-checkbox>
                         </td>

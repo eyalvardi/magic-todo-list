@@ -15,13 +15,15 @@ import {AppComponent} from './app.component';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoTaskComponent} from './todo-list/todo-task.component';
 import {TodoListService} from './todo-list/todo-list.service';
+import { TodoListProgressComponent } from './todo-list/todo-list-progress.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         TodoListComponent,
-        TodoTaskComponent
+        TodoTaskComponent,
+        TodoListProgressComponent
 
     ],
     imports: [

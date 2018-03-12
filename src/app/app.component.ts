@@ -12,17 +12,7 @@ import {TodoListService} from "./todo-list/todo-list.service";
                 <span class="example-fill-remaining-space"></span>
 
                 <div class="d-inline-block progress-cointainer">
-                    <div class="d-flex justify-content-end">
-                        Status: &nbsp;
-                        <div class="d-inline-block progress ">
-                            <div class="bg-info border" [ngStyle]="{ width: blService.donePercentage * 100 + '%' }">
-                                &nbsp;
-                            </div>
-                        </div>
-                        <div class="d-inline-block" style="padding: 0px 3px">
-                            {{ blService.donePercentage | percent}}
-                        </div>
-                    </div>
+                    <todo-list-progress class="d-flex justify-content-end"></todo-list-progress>
                 </div>
             </mat-toolbar>
 
