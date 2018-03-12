@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { TodoListService } from "./todo-list.service";
+import { TodoListService } from "../todo-list.service";
 
 
 @Component({

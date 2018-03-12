@@ -4,11 +4,18 @@ export class TaskModel{
     id:number;
     isDone:boolean;
     desc:string;
+    priority:number;
+    endDate:Date;
 
-    constructor(desc:string,isDone:boolean = false){
+    constructor(desc:string,date:Date,isDone:boolean = false){
         this.id     = counter++;
         this.isDone = isDone;
         this.desc   = desc;
+        this.endDate= date;
+    }
+
+    get isPassedDate():boolean{
+        return new Date().getTime() > this.endDate.getTime();
     }
 }
 
@@ -16,8 +23,8 @@ export class TaskModel{
 export class TodoListService{
     tasks:TaskModel[] = [];
 
-    addTask(desc:string):void{
-        let task = new TaskModel(desc);
+    addTask(desc:string,date:string):void{
+        let task = new TaskModel(desc,new Date(date));
         this.tasks.push(task);
     }
 

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {TodoListService} from "./todo-list.service";
+import {TodoListService} from "../todo-list.service";
 
 @Component({
     selector: "todo-list",
@@ -14,7 +14,17 @@ import {TodoListService} from "./todo-list.service";
                             #i>
                 </mat-form-field>
 
-                <button mat-raised-button color="primary" (click)="blService.addTask(i.value)">Add Task</button>
+                <mat-form-field>
+                    <input #date
+                            matInput                           
+                           [matDatepicker]="picker"
+                           placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                
+                <button mat-raised-button color="primary" 
+                        (click)="blService.addTask(i.value,date.value)">Add Task</button>
             </div>
             <br>
             <div>
@@ -22,7 +32,8 @@ import {TodoListService} from "./todo-list.service";
                     <thead class="thead-dark">
                     <tr>
                         <td scope="col">#</td>
-                        <td scope="col">Descriptions</td>
+                        <td scope="col" style="width: 60%">Descriptions</td>
+                        <td scope="col">End D.</td>
                         <td scope="col">Priority</td>
                         <td scope="col">Check</td>
                         <td scope="col" class="td-actions">Actions</td>
@@ -31,7 +42,8 @@ import {TodoListService} from "./todo-list.service";
                     <tbody>
                     <tr *ngFor="let task of blService.tasks">
                         <td scope="row">{{task.id}}</td>
-                        <td>{{task.desc}}</td>
+                        <td>{{task.desc}} - {{task.isPassedDate}}</td>
+                        <td><span [class.bg-danger]="task.isPassedDate">{{task.endDate | date}}</span></td>
                         <td>
                             <mat-select placeholder="Priority">
                                 <mat-option [value]="1">1</mat-option>
@@ -48,7 +60,6 @@ import {TodoListService} from "./todo-list.service";
                                 <mat-icon>delete</mat-icon>
                             </button>
                         </td>
-                        <!--<td><button (click)="blService.removeTask(task)">x</button></td>-->
                     </tr>
                     </tbody>
                 </table>

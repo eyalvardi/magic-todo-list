@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {TodoListService} from "./todo-list.service";
+import {TodoListService} from "../todo-list.service";
 
 @Component({
     selector: 'todo-list-progress',
