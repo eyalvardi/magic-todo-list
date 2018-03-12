@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.progress {
+    height: 25px;
+    width: 300px;
+    border: 1px solid black;
+    display: block;
+}
+.progress-cointainer{
+    float:right;
+    width: 300px;
+    display: block;
+    margin-right: 100px;
+    font-size: smaller;
+    line-height: 22px;
+}
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox.
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}

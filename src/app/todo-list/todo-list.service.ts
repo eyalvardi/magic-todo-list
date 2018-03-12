@@ -29,4 +29,9 @@ export class TodoListService{
     get totalIsDone(){
         return this.tasks.filter(t=>t.isDone).length;
     }
+    get donePercentage(){
+        if(!this.tasks || this.tasks.length === 0) return 0;
+
+        return this.totalIsDone / this.tasks.length;
+    }
 }
