@@ -92,8 +92,8 @@ export class TodoListComponent {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
             //this.animal = result;
+            Object.assign(task,result);
         });
     }
 }

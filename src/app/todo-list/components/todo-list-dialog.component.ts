@@ -12,11 +12,16 @@ import {TaskModel} from "../todo-list.service";
                     <tbody>
                     <tr>
                         <td>
-                            <mat-checkbox [(ngModel)]="task.isDone">Is Daone</mat-checkbox>
+                            <mat-checkbox 
+                                    name="isDone"
+                                    [(ngModel)]="task.isDone">
+                                Is Daone
+                            </mat-checkbox>
                         </td>
                         <td>
                             <mat-form-field class="example-full-width">
                                 <input matInput
+                                       name="desc"
                                        [(ngModel)]="task.desc"
                                        placeholder="Description">
                             </mat-form-field>
@@ -28,7 +33,8 @@ import {TaskModel} from "../todo-list.service";
                                 <input #date
                                        matInput
                                        [matDatepicker]="picker"
-                                       [(ngModel)]="task.desc"
+                                       name="date"
+                                       [(ngModel)]="task.endDate"
                                        placeholder="Choose a date">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
@@ -36,6 +42,7 @@ import {TaskModel} from "../todo-list.service";
                         </td>
                         <td>
                             <mat-select
+                                    name="priority"
                                     [(ngModel)]="task.priority"
                                     placeholder="Priority">
                                 <mat-option [value]="1">1</mat-option>
@@ -51,7 +58,7 @@ import {TaskModel} from "../todo-list.service";
         <mat-dialog-actions>
             <button mat-button mat-dialog-close>Cancel</button>
             <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-            <button mat-button [mat-dialog-close]="true">Save</button>
+            <button mat-button [mat-dialog-close]="task">Save</button>
         </mat-dialog-actions>
     `,
     styles: []
@@ -61,12 +68,12 @@ export class TodoListDialogComponent {
     task:TaskModel = {} as TaskModel;
 
 
+
     constructor(
         public dialogRef: MatDialogRef<TodoListDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
 
-        Object.assign(this.task,data.task);
-    }
+        Object.assign(this.task,data.task);    }
 
     onNoClick(): void {
         this.dialogRef.close();
