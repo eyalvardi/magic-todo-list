@@ -7,7 +7,7 @@ import {TodoListService} from "../todo-list.service";
         <div class="d-flex justify-content-end">
             Status: &nbsp;
             <div class="d-inline-block progress ">
-                <div class="bg-info border" [ngStyle]="{ width: blService.donePercentage * 100 + '%' }">
+                <div class="bg-warning border" [ngStyle]="{ width: blService.donePercentage * 100 + '%' }">
                     &nbsp;
                 </div>
             </div>

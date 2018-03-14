@@ -6,13 +6,16 @@ import {TodoListService} from "./todo-list/todo-list.service";
     template: `
         <div>
             <mat-toolbar color="primary">
-                Todo List Demo
+                <div class="container">
+                    <img src="../assets/magic-logo.png" class="logo"/>
+                    Todo List Demo
 
-                <!-- This fills the remaining space of the current row -->
-                <span class="example-fill-remaining-space"></span>
+                    <!-- This fills the remaining space of the current row -->
+                    <span class="example-fill-remaining-space"></span>
 
-                <div class="d-inline-block progress-cointainer">
-                    <todo-list-progress class="d-flex justify-content-end"></todo-list-progress>
+                    <div class="d-inline-block progress-cointainer">
+                        <todo-list-progress class="d-flex justify-content-end"></todo-list-progress>
+                    </div>
                 </div>
             </mat-toolbar>
 
