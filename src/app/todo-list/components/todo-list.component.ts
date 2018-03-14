@@ -3,6 +3,7 @@ import {TaskModel, TodoListService} from "../todo-list.service";
 import {DialogPosition, MatDialog} from "@angular/material";
 import {TodoListDialogComponent} from "./todo-list-dialog.component";
 
+
 @Component({
     selector: "todo-list",
     template: `
