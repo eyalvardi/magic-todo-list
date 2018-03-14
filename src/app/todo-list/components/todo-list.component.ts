@@ -1,5 +1,7 @@
 import {Component} from "@angular/core";
-import {TodoListService} from "../todo-list.service";
+import {TaskModel, TodoListService} from "../todo-list.service";
+import {DialogPosition, MatDialog} from "@angular/material";
+import {TodoListDialogComponent} from "./todo-list-dialog.component";
 
 @Component({
     selector: "todo-list",
@@ -42,7 +44,7 @@ import {TodoListService} from "../todo-list.service";
                     <tbody>
                     <tr *ngFor="let task of blService.tasks">
                         <td scope="row">{{task.id}}</td>
-                        <td>{{task.desc}} - {{task.isPassedDate}}</td>
+                        <td>{{task.desc}}</td>
                         <td><span [class.bg-danger]="task.isPassedDate">{{task.endDate | date}}</span></td>
                         <td>
                             <mat-select placeholder="Priority">
@@ -59,6 +61,10 @@ import {TodoListService} from "../todo-list.service";
                                     (click)="blService.removeTask(task)">
                                 <mat-icon>delete</mat-icon>
                             </button>
+                            <button mat-icon-button color="info"
+                                    (click)="openDialog(task)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -72,6 +78,22 @@ import {TodoListService} from "../todo-list.service";
     `
 })
 export class TodoListComponent {
-    constructor(public blService: TodoListService) {
+    constructor(
+        private dialog : MatDialog,
+        public blService: TodoListService) {
+    }
+
+    openDialog(task:TaskModel): void {
+        let dialogRef = this.dialog.open(TodoListDialogComponent, {
+            height: '400px',
+            width : '600px',
+            //position: DialogPosition.left,
+            data: { task: task }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+            //this.animal = result;
+        });
     }
 }

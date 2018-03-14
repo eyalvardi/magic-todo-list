@@ -12,12 +12,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {AppComponent} from './app.component';
 import {TodoListComponent} from './todo-list/components/todo-list.component';
 import {TodoTaskComponent} from './todo-list/components/todo-task.component';
 import {TodoListService} from './todo-list/todo-list.service';
 import { TodoListProgressComponent } from './todo-list/components/todo-list-progress.component';
+import { TodoListDialogComponent } from './todo-list/components/todo-list-dialog.component';
 
 
 @NgModule({
@@ -25,8 +27,12 @@ import { TodoListProgressComponent } from './todo-list/components/todo-list-prog
         AppComponent,
         TodoListComponent,
         TodoTaskComponent,
-        TodoListProgressComponent
+        TodoListProgressComponent,
+        TodoListDialogComponent
 
+    ],
+    entryComponents:[
+        TodoListDialogComponent
     ],
     imports: [
 
@@ -43,7 +49,8 @@ import { TodoListProgressComponent } from './todo-list/components/todo-list-prog
         //MatMomentDateModule,
         MatButtonModule,
         MatCheckboxModule,
-        MatIconModule
+        MatIconModule,
+        MatDialogModule
 
     ],
     providers: [
