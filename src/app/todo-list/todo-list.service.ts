@@ -6,6 +6,8 @@ export class TaskModel{
     desc:string;
     priority:number;
     endDate:Date;
+    assignTo:string = "none";
+    picUrl:string;
 
     constructor(desc:string,date:Date,isDone:boolean = false){
         this.id     = counter++;
@@ -24,7 +26,7 @@ export class TodoListService{
     tasks:TaskModel[] = [];
 
     addTask(desc:string,date:string):void{
-        let task = new TaskModel(desc,new Date(date));
+        let task = new TaskModel(desc,new Date(date || "11/11/2018"));
         this.tasks.push(task);
     }
 

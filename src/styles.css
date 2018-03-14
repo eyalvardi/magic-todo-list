@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.cursor-pointer{
+    cursor: pointer;
+}
+.face{
+    width: 35px;
+}
 .logo{
     margin-right: 15px;
+}
+.end-date{
+    border:2px solid lightcoral;
 }
 .example-form {
     min-width: 150px;
@@ -14,7 +23,9 @@
     width: 100%;
 }
 
-
+.table-thead{
+    background-color: bisque;
+}
 
 mat-form-field{
     margin-right: 15px;

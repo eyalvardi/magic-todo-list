@@ -32,10 +32,11 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
             <br>
             <div>
                 <table class="table table-striped table-condensed border table-hover table-sm">
-                    <thead class="thead-dark">
-                    <tr>
+                    <thead class="table-thead">
+                        <tr>
                         <td scope="col">#</td>
-                        <td scope="col" style="width: 60%">Descriptions</td>
+                        <td scope="col" style="width: 40%">Descriptions</td>
+                        <td scope="col">Assign</td>
                         <td scope="col">End D.</td>
                         <td scope="col">Priority</td>
                         <td scope="col">Check</td>
@@ -43,10 +44,15 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let task of blService.tasks">
+                    <tr     [class.end-date]="task.isPassedDate"
+                            *ngFor="let task of blService.tasks">
                         <td scope="row">{{task.id}}</td>
                         <td>{{task.desc}}</td>
-                        <td><span [class.bg-danger]="task.isPassedDate">{{task.endDate | date}}</span></td>
+                        <td>
+                            <img class="img-thumbnail face" [src]="task.picUrl"/>
+                            {{task.assignTo}}
+                        </td>
+                        <td>{{task.endDate | date}}</td>
                         <td>
                             <mat-select
                                     name="priority"
@@ -77,7 +83,7 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
             </div>
             <hr>
             <div>
-                Total : {{blService.totalIsDone}} / {{blService.tasks.length}}
+                <strong> Total : {{blService.totalIsDone}} / {{blService.tasks.length}}</strong>
             </div>
         </div>
     `
@@ -90,8 +96,8 @@ export class TodoListComponent {
 
     openDialog(task:TaskModel): void {
         let dialogRef = this.dialog.open(TodoListDialogComponent, {
-            height: '400px',
-            width : '600px',
+            height: '500px',
+            width : '700px',
             //position: DialogPosition.left,
             data: { task: task }
         });

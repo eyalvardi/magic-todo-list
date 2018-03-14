@@ -5,30 +5,24 @@ import {TaskModel} from "../todo-list.service";
 @Component({
     selector: 'app-todo-list-dialog',
     template: `
-        <h2 mat-dialog-title>Edit Task Id: {{task.id}}</h2>
+        <mat-toolbar color="primary">
+                <span mat-dialog-title>Task Id: {{task.id}}</span>
+        </mat-toolbar>
+        
         <mat-dialog-content>
             <form class="example-form">
-                <table class="table">
-                    <tbody>
+                
+                <table class="table table-sm">                    
                     <tr>
-                        <td>
-                            <mat-checkbox 
-                                    name="isDone"
-                                    [(ngModel)]="task.isDone">
-                                Is Daone
-                            </mat-checkbox>
-                        </td>
-                        <td>
+                        <td width="70%">
                             <mat-form-field class="example-full-width">
                                 <input matInput
                                        name="desc"
                                        [(ngModel)]="task.desc"
                                        placeholder="Description">
-                            </mat-form-field>
+                            </mat-form-field> 
                         </td>
-                    </tr>
-                    <tr>
-                        <td>
+                        <td width="30%">
                             <mat-form-field>
                                 <input #date
                                        matInput
@@ -39,6 +33,15 @@ import {TaskModel} from "../todo-list.service";
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
                             </mat-form-field>
+                        </td>                        
+                    </tr>
+                    <tr>                        
+                        <td>
+                            <mat-checkbox
+                                    name="isDone"
+                                    [(ngModel)]="task.isDone">
+                                Is Done
+                            </mat-checkbox>                            
                         </td>
                         <td>
                             <mat-select
@@ -52,35 +55,34 @@ import {TaskModel} from "../todo-list.service";
                             </mat-select>
                         </td>
                     </tr>
-                    </tbody>
                 </table>
             </form>
+            <users [task]="task"></users>
         </mat-dialog-content>
         <mat-dialog-actions>
-            <button mat-button mat-dialog-close>Cancel</button>
-            <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-            <button mat-button [mat-dialog-close]="task">Save</button>
+            <button mat-raised-button mat-dialog-close color="primary">Cancel</button>
+            <button mat-raised-button [mat-dialog-close]="task" color="primary">Save</button>
         </mat-dialog-actions>
     `,
     styles: []
 })
 export class TodoListDialogComponent {
 
-    task:TaskModel = {} as TaskModel;
-
+    task: TaskModel = {} as TaskModel;
 
 
     constructor(
         public dialogRef: MatDialogRef<TodoListDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any) {
 
-        Object.assign(this.task,data.task);    }
+        Object.assign(this.task, data.task);
+    }
 
     onNoClick(): void {
         this.dialogRef.close();
     }
 
-    setPriority(matSelect){
+    setPriority(matSelect) {
         this.task.priority = matSelect.value;
     }
 

@@ -20,12 +20,11 @@ import {TodoListService} from "./todo-list/todo-list.service";
             </mat-toolbar>
 
             <div class="container">
-                <br>
+                <br>                
                 <todo-list></todo-list>
             </div>
         </div>
-    `
-})
+`})
 export class AppComponent {
     constructor(public blService: TodoListService) {
     }
