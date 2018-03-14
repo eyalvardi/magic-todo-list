@@ -44,6 +44,7 @@ import {TaskModel} from "../todo-list.service";
                             <mat-select
                                     name="priority"
                                     [(ngModel)]="task.priority"
+                                    (change)="setPriority($event)"
                                     placeholder="Priority">
                                 <mat-option [value]="1">1</mat-option>
                                 <mat-option [value]="2">2</mat-option>
@@ -77,6 +78,10 @@ export class TodoListDialogComponent {
 
     onNoClick(): void {
         this.dialogRef.close();
+    }
+
+    setPriority(matSelect){
+        this.task.priority = matSelect.value;
     }
 
 }

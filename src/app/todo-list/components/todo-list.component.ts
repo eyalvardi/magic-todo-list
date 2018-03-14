@@ -21,7 +21,8 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
                             matInput                           
                            [matDatepicker]="picker"
                            placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker-toggle matSuffix [for]="picker">                        
+                    </mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
                 
@@ -47,7 +48,11 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
                         <td>{{task.desc}}</td>
                         <td><span [class.bg-danger]="task.isPassedDate">{{task.endDate | date}}</span></td>
                         <td>
-                            <mat-select placeholder="Priority">
+                            <mat-select
+                                    name="priority"
+                                    [(ngModel)]="task.priority"
+                                    (change)="setPriority(task, $event)"
+                                    placeholder="Priority">
                                 <mat-option [value]="1">1</mat-option>
                                 <mat-option [value]="2">2</mat-option>
                                 <mat-option [value]="3">3</mat-option>
@@ -95,5 +100,9 @@ export class TodoListComponent {
             //this.animal = result;
             Object.assign(task,result);
         });
+    }
+
+    setPriority(task, matSelect){
+        task.priority = matSelect.value;
     }
 }
