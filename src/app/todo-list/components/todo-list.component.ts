@@ -1,8 +1,7 @@
 import {Component} from "@angular/core";
 import {TaskModel, TodoListService} from "../todo-list.service";
-import {DialogPosition, MatDialog} from "@angular/material";
+import {MatDialog, MatSnackBar} from "@angular/material";
 import {TodoListDialogComponent} from "./todo-list-dialog.component";
-
 
 @Component({
     selector: "todo-list",
@@ -28,7 +27,7 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
                 </mat-form-field>
                 
                 <button mat-raised-button color="primary" 
-                        (click)="blService.addTask(i.value,date.value)">Add Task</button>
+                        (click)="addTask(i.value,date.value)">Add Task</button>
             </div>
             <br>
             <div>
@@ -53,7 +52,7 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
                             <img class="img-thumbnail face" [src]="task.picUrl"/>
                             {{task.assignTo}}
                         </td>
-                        <td>{{task.endDate | date}}</td>
+                        <td>{{task.endDate | date:'shortDate'}}</td>
                         <td>
                             <mat-select
                                     name="priority"
@@ -90,8 +89,10 @@ import {TodoListDialogComponent} from "./todo-list-dialog.component";
     `
 })
 export class TodoListComponent {
+
     constructor(
-        private dialog : MatDialog,
+        private dialog  : MatDialog,
+        private snackBar: MatSnackBar,
         public blService: TodoListService) {
     }
 
@@ -111,5 +112,11 @@ export class TodoListComponent {
 
     setPriority(task, matSelect){
         task.priority = matSelect.value;
+    }
+    addTask(desc,date){
+        this.snackBar.open('create new task','Add Task',{
+            duration: 2000,
+        });
+        this.blService.addTask(desc,date);
     }
 }

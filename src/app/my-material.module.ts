@@ -1,6 +1,3 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-
 // Angular Material
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from "@angular/material";
@@ -16,6 +13,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export const materialModules = [
     // Angular Material
@@ -33,5 +31,6 @@ export const materialModules = [
     MatDialogModule,
     MatCardModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
 ];

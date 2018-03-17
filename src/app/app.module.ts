@@ -11,7 +11,7 @@ import { TodoListDialogComponent } from './todo-list/components/todo-list-dialog
 import { UsersComponent } from './todo-list/components/users.component';
 import {UsersProxyService} from "./todo-list/users.proxy.service";
 import {HttpClientModule} from "@angular/common/http";
-import {materialModules, MyMaterialModule} from "./my-material.module";
+import {materialModules} from "./my-material.module";
 
 
 @NgModule({

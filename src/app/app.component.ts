@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {TodoListService} from "./todo-list/todo-list.service";
 
 @Component({
     selector: 'app-root',
@@ -26,6 +25,6 @@ import {TodoListService} from "./todo-list/todo-list.service";
         </div>
 `})
 export class AppComponent {
-    constructor(public blService: TodoListService) {
+    constructor(/*public blService: TodoListService*/) {
     }
 }
